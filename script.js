@@ -90,10 +90,18 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  var passwordLength = prompt("How many characters would you like your password to contain?");
+  if (passwordLength < 8 || passwordLength > 128) {
+    alert("Password length must be between 8 and 128 characters.");
+  }
+  return passwordLength; 
 }
 
-// Function for getting a random element from an array
+//-----test 
+console.log(getPasswordOptions());
+
+
+//Function for getting a random element from an array
 function getRandom(arr) {
   return arr[Math.floor(Math.random()* arr.length)];
 }
