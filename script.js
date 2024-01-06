@@ -99,10 +99,10 @@ function getPasswordOptions() {
   };
 
   // Let user confirm which character types are included in the password
-  var includeSpecial = confirm("Click OK to confirm including special characters.");
-  var includeNumeric = confirm("Click OK to confirm including numeric characters.");
-  var includeLowercase = confirm("Click OK to confirm including Lowercase characters.");
-  var includeUppercase = confirm("Click OK to confirm including uppercase characters."); 
+  var includeSpecial = confirm("Click 'OK' to confirm including special characters.");
+  var includeNumeric = confirm("Click 'OK' to confirm including numeric characters.");
+  var includeLowercase = confirm("Click 'OK' to confirm including Lowercase characters.");
+  var includeUppercase = confirm("Click 'OK' to confirm including uppercase characters."); 
 
  // Return user's selection to an object
   return {
@@ -138,6 +138,9 @@ function generatePassword() {
   }
   if (userChoices.numeric) {
     characters = characters.concat(numericCharacters);
+  }
+  if (userChoices.lowercase) {
+    characters = characters.concat(lowerCasedCharacters);
   }
 
   //Loop password length to add from new character array to password string
