@@ -90,10 +90,10 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  var passwordLength = prompt("How many characters would you like your password to contain? \n \n * at least 8 characters, no more than 128 *");
+  var passwordLength = prompt("How many characters would you like your password to contain? \n \n * Pick a number from 8 to 128 *");
 
   // Alert when password length doesn't meet length requirements
-  if (passwordLength < 8 || passwordLength > 128) {
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
     alert("Error: \nPassword length must be at least 8 characters, no more than 128. \nPlease try again!");
     return;
   };
@@ -106,29 +106,44 @@ function getPasswordOptions() {
 
  // Return user's selection to an object
   return {
-    lengthOfPassword: parseInt(passwordLength),
-    specialCharacters: includeSpecial,
-    numericCharacters: includeNumeric,
-    lowercaseCharacters: includeLowercase,
-    uppercaseCharacters: includeUppercase
+    length: parseInt(passwordLength),
+    special: includeSpecial,
+    numeric: includeNumeric,
+    lowercase: includeLowercase,
+    uppercase: includeUppercase
   };
+  // return {
+  //   lengthOfPassword: parseInt(passwordLength),
+  //   choices: [includeSpecial,
+  //     includeNumeric,
+  //     includeLowercase,
+  //     includeUppercase
+  //   ]
+  // };
 }
 
-//---------------test 
-console.log(getPasswordOptions());
+// //---------------test 
+// console.log(getPasswordOptions());
 
 
 //Function for getting a random element from an array
 function getRandom(arr) {
   return arr[Math.floor(Math.random()* arr.length)];
 }
-//---------------test 
-console.log(getRandom(upperCasedCharacters));
+// //---------------test 
+// console.log(getRandom(upperCasedCharacters));
 
 
 // Function to generate password with user input
 function generatePassword() {
+  var userChoices = getPasswordOptions();
+  
+    if (!userChoices.special && !userChoices.numeric && !userChoices.lowercase && !userChoices.uppercase) {
+      alert("Error: \nYou need to select at least one character type. \nPlease try again!");
+      return null;
+    }
 
+  
 }
 
 // Get references to the #generate element
