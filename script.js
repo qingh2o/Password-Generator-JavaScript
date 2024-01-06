@@ -92,7 +92,7 @@ var upperCasedCharacters = [
 function getPasswordOptions() {
   var passwordLength = prompt("How many characters would you like your password to contain? \n \n * Pick a number from 8 to 128 *");
 
-  // Alert when password length doesn't meet length requirements
+  // Alert error when password length doesn't meet length requirements
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
     alert("Error: \nPassword length must be at least 8 characters, no more than 128. \nPlease try again!");
     return;
@@ -112,37 +112,39 @@ function getPasswordOptions() {
     lowercase: includeLowercase,
     uppercase: includeUppercase
   };
-  // return {
-  //   lengthOfPassword: parseInt(passwordLength),
-  //   choices: [includeSpecial,
-  //     includeNumeric,
-  //     includeLowercase,
-  //     includeUppercase
-  //   ]
-  // };
 }
-
-// //---------------test 
-// console.log(getPasswordOptions());
-
 
 //Function for getting a random element from an array
 function getRandom(arr) {
   return arr[Math.floor(Math.random()* arr.length)];
 }
-// //---------------test 
-// console.log(getRandom(upperCasedCharacters));
 
-
-// Function to generate password with user input
+//Function to generate password with user input
 function generatePassword() {
+
+  //Load user choice generated from getPasswordOptions function 
   var userChoices = getPasswordOptions();
-  
+
+   //Alert error when user doesn't select any character type
     if (!userChoices.special && !userChoices.numeric && !userChoices.lowercase && !userChoices.uppercase) {
       alert("Error: \nYou need to select at least one character type. \nPlease try again!");
       return null;
     }
 
+  //Create a new characters array when user selects a character type
+  var characters = [];
+  if (userChoices.special) {
+    characters = characters.concat(specialCharacters);
+  } 
+ 
+  
+  //Loop password length to add from new character array to password string
+  var passwordString = "";
+  for (var i = 0; i < userChoices.length; i++) {
+    passwordString += getRandom(characters)
+  }
+
+  return passwordString;
   
 }
 
