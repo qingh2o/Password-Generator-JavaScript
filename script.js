@@ -131,25 +131,35 @@ function generatePassword() {
     return null;
   }
 
-  //Create a new characters array when user selects a character type
-  var characters = [];
+  //Creates a new character array to contain the user-selected character type
+  var includeType = [];
+
+  //Store the generated characters into new characters array
+  var generatedCharacters= [];
+
   if (userChoices.special) {
-    characters = characters.concat(specialCharacters);
+    includeType = includeType.concat(specialCharacters);
+    generatedCharacters.push(getRandom(specialCharacters)); 
   }
   if (userChoices.numeric) {
-    characters = characters.concat(numericCharacters);
+    includeType = includeType.concat(numericCharacters);
+    generatedCharacters.push(getRandom(numericCharacters));
   }
   if (userChoices.lowercase) {
-    characters = characters.concat(lowerCasedCharacters);
+    includeType = includeType.concat(lowerCasedCharacters);
+    generatedCharacters.push(getRandom(lowerCasedCharacters));
+  }
+  if (userChoices.uppercase) {
+    includeType = includeType.concat(upperCasedCharacters);
+    generatedCharacters.push(getRandom(upperCasedCharacters));
   }
 
   //Loop password length to add from new character array to password string
-  var passwordString = "";
-  for (var i = 0; i < userChoices.length; i++) {
-    passwordString += getRandom(characters)
+  for (var i = generatedCharacters.length; i < userChoices.length; i++) {
+    generatedCharacters.push(getRandom(includeType));
   }
 
-  return passwordString;
+  return generatedCharacters.join('');
 
 }
 
