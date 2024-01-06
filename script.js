@@ -125,19 +125,21 @@ function generatePassword() {
   //Load user choice generated from getPasswordOptions function 
   var userChoices = getPasswordOptions();
 
-   //Alert error when user doesn't select any character type
-    if (!userChoices.special && !userChoices.numeric && !userChoices.lowercase && !userChoices.uppercase) {
-      alert("Error: \nYou need to select at least one character type. \nPlease try again!");
-      return null;
-    }
+  //Alert error when user doesn't select any character type
+  if (!userChoices.special && !userChoices.numeric && !userChoices.lowercase && !userChoices.uppercase) {
+    alert("Error: \nYou need to select at least one character type. \nPlease try again!");
+    return null;
+  }
 
   //Create a new characters array when user selects a character type
   var characters = [];
   if (userChoices.special) {
     characters = characters.concat(specialCharacters);
-  } 
- 
-  
+  }
+  if (userChoices.numeric) {
+    characters = characters.concat(numericCharacters);
+  }
+
   //Loop password length to add from new character array to password string
   var passwordString = "";
   for (var i = 0; i < userChoices.length; i++) {
@@ -145,7 +147,7 @@ function generatePassword() {
   }
 
   return passwordString;
-  
+
 }
 
 // Get references to the #generate element
