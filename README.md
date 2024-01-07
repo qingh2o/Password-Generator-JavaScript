@@ -33,11 +33,11 @@ Once the Password-Generator-JavaScrip web page loads, the application should loo
 
 ![Prompt Password Length Screenshot](./screenshots/prompt_password_length.png)
 
-* Alert with error message if the entered number is out of range, not a number, or not entered by the user.
+* Alert with an error message if the entered number is out of range, not a number, or not entered by the user.
 
 ![Error Message Invalid Length](./screenshots/error_invalid_length.png)
 
-* Alert with error message reminds user need to choose at least one character type as well.
+* Alert with an error message reminds the user need to choose at least one character type.
 
 ![Error Message Without Any Type Screenshot](./screenshots/error_select_no_type.png)
 
@@ -57,7 +57,7 @@ Once the Password-Generator-JavaScrip web page loads, the application should loo
 
 ![Confirm Uppercase Characters Screenshot](./screenshots/confirm_uppercase_characters.png)
 
-* Alert with error message when user doesn't select any character type.
+* Alert with an error message when the password length meets the criteria, but the user doesn't select any character type.
 
 ![Error Message Without Any Type Screenshot](./screenshots/error_select_no_type.png)
 
