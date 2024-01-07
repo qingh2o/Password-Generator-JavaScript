@@ -48,7 +48,7 @@ function generatePassword() {
   var userChoices = getPasswordOptions();
 
   //Alert error when user doesn't select any character type
-  if (!userChoices.special && !userChoices.numeric && !userChoices.lowercase && !userChoices.uppercase) {
+  if (!userChoices || (!userChoices.special && !userChoices.numeric && !userChoices.lowercase && !userChoices.uppercase)) {
     alert("Error: \nYou need to select at least one character type. \nPlease try again!");
     return null;
   }
