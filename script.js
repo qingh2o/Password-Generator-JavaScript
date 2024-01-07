@@ -1,92 +1,14 @@
 // Array of special characters to be included in password
-var specialCharacters = [
-  '@',
-  '%',
-  '+',
-  '\\',
-  '/',
-  "'",
-  '!',
-  '#',
-  '$',
-  '^',
-  '?',
-  ':',
-  ',',
-  ')',
-  '(',
-  '}',
-  '{',
-  ']',
-  '[',
-  '~',
-  '-',
-  '_',
-  '.'
-];
+var specialCharacters = ['@', '%', '+', '\\', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'];
 
 // Array of numeric characters to be included in password
 var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 // Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z'
-];
+var lowerCasedCharacters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 // Array of uppercase characters to be included in password
-var upperCasedCharacters = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z'
-];
+var upperCasedCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 // Function to prompt user for password options
 function getPasswordOptions() {
@@ -102,9 +24,9 @@ function getPasswordOptions() {
   var includeSpecial = confirm("Click 'OK' to confirm including special characters.");
   var includeNumeric = confirm("Click 'OK' to confirm including numeric characters.");
   var includeLowercase = confirm("Click 'OK' to confirm including Lowercase characters.");
-  var includeUppercase = confirm("Click 'OK' to confirm including uppercase characters."); 
+  var includeUppercase = confirm("Click 'OK' to confirm including uppercase characters.");
 
- // Return user's selection to an object
+  // Return user's selection to an object
   return {
     length: parseInt(passwordLength),
     special: includeSpecial,
@@ -116,7 +38,7 @@ function getPasswordOptions() {
 
 //Function for getting a random element from an array
 function getRandom(arr) {
-  return arr[Math.floor(Math.random()* arr.length)];
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 //Function to generate password with user input
@@ -131,15 +53,16 @@ function generatePassword() {
     return null;
   }
 
-  //Creates a new character array to contain the user-selected character type
+  //Creates the includeType character array to contain the user-selected character type
   var includeType = [];
 
-  //Store the generated characters into new characters array
-  var generatedCharacters= [];
+  //Store user-selected character type into includeType character array
+  var generatedCharacters = [];
 
+  //When each containing character type condition is true, join the character type to a new character array and push its random characters into the generatedCharacters array.
   if (userChoices.special) {
     includeType = includeType.concat(specialCharacters);
-    generatedCharacters.push(getRandom(specialCharacters)); 
+    generatedCharacters.push(getRandom(specialCharacters));
   }
   if (userChoices.numeric) {
     includeType = includeType.concat(numericCharacters);
@@ -154,11 +77,15 @@ function generatePassword() {
     generatedCharacters.push(getRandom(upperCasedCharacters));
   }
 
-  //Loop password length to add from new character array to password string
+  //Loop the remaining password length into the generatedCharacters array.
   for (var i = generatedCharacters.length; i < userChoices.length; i++) {
     generatedCharacters.push(getRandom(includeType));
   }
 
+  //Sorting generated characters in Random Order
+  generatedCharacters = generatedCharacters.sort(function () { return Math.random() - 0.5; });
+
+  //Join all generated characters into a new string 
   return generatedCharacters.join('');
 
 }
