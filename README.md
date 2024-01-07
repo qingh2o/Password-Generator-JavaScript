@@ -14,3 +14,14 @@ The password generator application must meet the following critical requirements
   * After answering prompts, display the generated password in an alert or on the page.
 * Ensure the application is error-free in Chrome DevTools inspection.
 
+## Installation
+
+N/A
+
+## Credits
+
+N/A
+
+## License
+
+Please refer to the LICENSE in the repo.
