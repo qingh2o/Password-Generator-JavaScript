@@ -37,6 +37,10 @@ Once the Password-Generator-JavaScrip web page loads, the application should loo
 
 ![Error Message Invalid Length](./screenshots/error_invalid_length.png)
 
+* Alert with error message reminds user need to choose at least one character type as well.
+
+![Error Message Without Any Type Screenshot](./screenshots/error_select_no_type.png)
+
 * When the password length meets the criteria, let the user confirm whether to include a special character type.
 
 ![Confirm Special Characters Screenshot](./screenshots/confirm_special_characters.png)
