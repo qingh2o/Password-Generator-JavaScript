@@ -21,10 +21,10 @@ function getPasswordOptions() {
   };
 
   // Let user confirm which character types are included in the password
-  var includeSpecial = confirm("Click 'OK' to confirm including special characters.");
-  var includeNumeric = confirm("Click 'OK' to confirm including numeric characters.");
-  var includeLowercase = confirm("Click 'OK' to confirm including Lowercase characters.");
-  var includeUppercase = confirm("Click 'OK' to confirm including uppercase characters.");
+  var includeSpecial = confirm("Click 'OK' to confirm including special characters. \n( $@%&*, etc )");
+  var includeNumeric = confirm("Click 'OK' to confirm including numeric characters. \n( 12345, etc )");
+  var includeLowercase = confirm("Click 'OK' to confirm including lowercase characters. \n( abcde, etc )");
+  var includeUppercase = confirm("Click 'OK' to confirm including uppercase characters. \n( ABCDE, etc )");
 
   // Return user's selection to an object
   return {
