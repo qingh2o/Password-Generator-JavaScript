@@ -12,7 +12,7 @@ var upperCasedCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  var passwordLength = prompt("How many characters would you like your password to contain? \n \n * Pick a number between 8 and 128 *");
+  var passwordLength = prompt("How many characters would you like your password to contain?  \n * Pick a number between 8 and 128 *");
 
   // Alert error when password length doesn't meet length requirements
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
