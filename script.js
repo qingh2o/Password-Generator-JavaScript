@@ -82,12 +82,11 @@ function generatePassword() {
     generatedCharacters.push(getRandom(includeType));
   }
 
-  //Sorting generated characters in Random Order
+  //Sort generated characters in Random Order
   generatedCharacters = generatedCharacters.sort(function () { return Math.random() - 0.5; });
 
   //Join all generated characters into a new string 
   return generatedCharacters.join('');
-
 }
 
 // Get references to the #generate element
@@ -97,7 +96,6 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
-
   passwordText.value = password;
 }
 
